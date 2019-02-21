@@ -6,7 +6,7 @@ before_install:
   - docker build -t bpc1985/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run bpc1985/docker-complex-react-test npm run test -- --coverage
+  - docker run bpc1985/react-test npm run test -- --coverage
 
 after_success:
   - docker build -t bpc1985/multi-client ./client
