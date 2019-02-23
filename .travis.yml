@@ -20,3 +20,16 @@ after_success:
   - docker push bpc1985/multi-nginx
   - docker push bpc1985/multi-server
   - docker push bpc1985/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "multi-docker"
+    env: "MultiDocker-env"
+    bucket_name: "elasticbeanstalk-us-east-2-832065572045"
+    bucket_path: "multi-docker"
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: "$AWS_SECRET_KEY"
